@@ -7,7 +7,7 @@ pd.set_option('display.float_format', lambda x: '%.5f' % x)
 df_ = pd.read_excel("03_hafta/Ders Öncesi Notlar/online_retail_II.xlsx", sheet_name="Year 2010-2011")
 df = df_.copy()
 
-#Veriyi anlamaya çalışalım
+#Veriyi anlamak
 df.head()
 df.shape
 df.describe().T
@@ -15,6 +15,7 @@ df.isnull().sum()
 df["Description"].nunique()
 df.groupby("Description").agg({"Quantity": "sum"}).sort_values("Quantity", ascending=False).head()
 
+#recency ve frequency hesaplamasıyla rfm segmentleri oluşturma
 def create_rfm(dataframe):
 
     dataframe.dropna(inplace=True)
